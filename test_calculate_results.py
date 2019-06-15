@@ -38,7 +38,7 @@ class TestCalculateResults(TestCase):
         }]
         results = format_results( calculate_results(ts))
         self.assertEqual( 'Test Rider', results[0]['Rider'])
-        self.assertEqual( '039H59M', results[0]['CP1'])
+        self.assertEqual( '039H 59M', results[0]['CP1'])
         self.assertEqual( '', results[0]['CP2'])
         self.assertEqual( '', results[0]['CP3'])
         self.assertEqual( '', results[0]['CP4'])
@@ -57,8 +57,8 @@ class TestCalculateResults(TestCase):
         }]
         results = format_results( calculate_results(ts))
         self.assertEqual( 'Test Rider', results[0]['Rider'])
-        self.assertEqual( '039H59M', results[0]['CP1'])
-        self.assertEqual( '090H21M', results[0]['CP2'])
+        self.assertEqual( '039H 59M', results[0]['CP1'])
+        self.assertEqual( '090H 21M', results[0]['CP2'])
         self.assertEqual( '', results[0]['CP3'])
         self.assertEqual( '', results[0]['CP4'])
 
@@ -76,9 +76,9 @@ class TestCalculateResults(TestCase):
         }]
         results = format_results( calculate_results(ts))
         self.assertEqual( 'Test Rider', results[0]['Rider'])
-        self.assertEqual( '039H59M', results[0]['CP1'])
-        self.assertEqual( '090H21M', results[0]['CP2'])
-        self.assertEqual( '090H22M', results[0]['CP3'])
+        self.assertEqual( '039H 59M', results[0]['CP1'])
+        self.assertEqual( '090H 21M', results[0]['CP2'])
+        self.assertEqual( '090H 22M', results[0]['CP3'])
         self.assertEqual( '', results[0]['CP4'])
 
     def test_calculate_results_extraResults(self):
@@ -95,7 +95,7 @@ class TestCalculateResults(TestCase):
         }]
         results = format_results( calculate_results(ts))
         self.assertEqual( 'Test Rider', results[0]['Rider'])
-        self.assertEqual( '039H59M', results[0]['CP1'])
-        self.assertEqual( '090H21M', results[0]['CP2'])
+        self.assertEqual( '039H 59M', results[0]['CP1'])
+        self.assertEqual( '090H 21M', results[0]['CP2'])
         self.assertEqual( '', results[0]['CP3'])
         self.assertEqual( '', results[0]['CP4'])
