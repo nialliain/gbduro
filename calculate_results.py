@@ -52,4 +52,4 @@ if __name__ == "__main__":
     ts = read_timestamps()
     r = calculate_results(ts)
     fr = format_results(r)
-    write_results(fr, 'output/19-test.json')
+    write_results(fr, 'output/19.json')
