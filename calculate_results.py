@@ -21,10 +21,13 @@ def calculate_results(timestamps):
         for rider in timestamps:
             start_key = 's{}-start'.format(stage)
             end_key = 's{}-end'.format(stage)
-            result_key = 's{}-result'.format(stage)
-            if rider[start_key] and rider[end_key] and (last_result_key is None or last_result_key in rider):
-                rider[result_key] = rider.get(last_result_key, timedelta(0)) + rider[end_key] - rider[start_key]
-        last_result_key = result_key
+            stage_result_key = 's{}-stage'.format(stage)
+            cp_result_key = 's{}-cp'.format(stage)
+            if rider[start_key] and rider[end_key]:
+                rider[stage_result_key] = rider[end_key] - rider[start_key]
+                if last_result_key is None or last_result_key in rider:
+                    rider[cp_result_key] = rider.get(last_result_key, timedelta(0)) + rider[stage_result_key]
+        last_result_key = cp_result_key
     return timestamps
 
 def format_results(results):
@@ -33,10 +36,14 @@ def format_results(results):
     for rider in results:
         rider_results = OrderedDict()
         rider_results['Rider'] = rider['displayName']
-        rider_results['CP1'] = format_timedelta(rider.get('s1-result', ''))
-        rider_results['CP2'] = format_timedelta(rider.get('s2-result', ''))
-        rider_results['CP3'] = format_timedelta(rider.get('s3-result', ''))
-        rider_results['CP4'] = format_timedelta(rider.get('s4-result', ''))
+        rider_results['S1'] = format_timedelta(rider.get('s1-stage', ''))
+        rider_results['S2'] = format_timedelta(rider.get('s2-stage', ''))
+        rider_results['S3'] = format_timedelta(rider.get('s3-stage', ''))
+        rider_results['S4'] = format_timedelta(rider.get('s4-stage', ''))
+        rider_results['CP1'] = format_timedelta(rider.get('s1-cp', ''))
+        rider_results['CP2'] = format_timedelta(rider.get('s2-cp', ''))
+        rider_results['CP3'] = format_timedelta(rider.get('s3-cp', ''))
+        rider_results['CP4'] = format_timedelta(rider.get('s4-cp', ''))
         formatted_results.append( rider_results )
     return formatted_results
 
