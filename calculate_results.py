@@ -46,7 +46,7 @@ def format_timedelta( td ):
         return td
     hours = (td.days * 24) + (td.seconds / 3600)
     minutes = (td.seconds % 3600) / 60
-    return '{:03d}H{:02d}M'.format(hours, minutes)
+    return '{:03d}H {:02d}M'.format(hours, minutes)
 
 if __name__ == "__main__":
     ts = read_timestamps()
