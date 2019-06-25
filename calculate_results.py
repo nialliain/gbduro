@@ -51,6 +51,8 @@ def format_timedelta( td ):
     from datetime import timedelta
     if not isinstance(td, timedelta):
         return td
+    if td.days > 30:
+        return 'SCRATCH'
     hours = (td.days * 24) + (td.seconds / 3600)
     minutes = (td.seconds % 3600) / 60
     return '{:03d}H {:02d}M'.format(hours, minutes)
